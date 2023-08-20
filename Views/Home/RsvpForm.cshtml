@@ -12,7 +12,17 @@
     <title>RsvpForm</title>
 </head>
 <body>
-    <div> 
-    </div>
+   @using (Html.BeginForm())
+    {
+        <p>Ваше имя: @Html.TextBoxFor(x => x.Name)</p>
+        <p>Ваш email: @Html.TextBoxFor(x => x.Email)</p>
+        <p>Ваш телефон: @Html.TextBoxFor(x => x.Phone)</p>
+        <p>Вы придете? @Html.DropDownListFor(x => x.WillAttend, new[] { 
+                           new SelectListItem(){Text = "Да, конечно я буду", Value = Boolean.TrueString},
+                           new SelectListItem(){Text = "Нет, я не смогу", Value = Boolean.FalseString},
+                        })
+        </p>
+        <input type="submit", value="Отправить форму RSVP" />
+    }
 </body>
 </html>
